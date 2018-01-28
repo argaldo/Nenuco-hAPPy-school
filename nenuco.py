@@ -1,4 +1,5 @@
-import wave, struct, math, sys
+import wave, struct, math, sys, time
+from itertools import product
 import pyaudio
 
 commands = {
@@ -6,8 +7,13 @@ commands = {
 	'hello_teacher':[17200.0,17400.0,18200.0,17400.0,18200.0],
 	'i_knew_it':[17200.0,17800.0,18000.0,18200.0,18000.0],
 	'i_know_this':[17200.0,17800.0,18200.0,17800.0,18200.0],
-	'get_the_class_started':[17200.0,17400.0,17600.0,17800.0,17600.0]
+	'get_the_class_started':[17200.0,17400.0,17600.0,17800.0,17600.0],
+	'arm_up':[17200.0, 17400.0, 17800.0, 18200.0, 17800.0],
+	'arm_down':[17200.0, 17400.0, 18000.0, 17400.0, 17800.0],
+	'unknown':[17200.0, 17400.0, 18000.0, 17400.0, 18000.0],
+	'speech':[17200.0, 17800.0, 17600.0, 17800.0, 17600.0]
 }
+
 
 wavef = wave.open('temp.wav','w')
 
@@ -24,12 +30,12 @@ def generate_tone(frequency):
 	generate_silence(silence_period)
 	print "generating tone " + str(frequency) + " Hz"
 	for i in range(int(pulse_duration * sampleRate)):
-    		value = int(1024.0*math.sin(frequency*2*math.pi*float(i)/float(sampleRate)))
+    		value = int(256.0*math.sin(frequency*2*math.pi*float(i)/float(sampleRate)))
     		data = struct.pack('<h', value)
     		wavef.writeframesraw( data )
 
 def send_command(command):
-	print "synthezising command: " + command
+	print "synthezising command: " + str(command)
 	for tone in commands[command]:
 		generate_tone(tone)
 
@@ -46,6 +52,7 @@ def play_command():
 	stream.close()
 	p.terminate()
 	f.close()
+
 
 if __name__ == '__main__':
 	if len(sys.argv) > 1:
