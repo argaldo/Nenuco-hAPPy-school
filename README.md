@@ -7,9 +7,15 @@ About Nenuco hAPPy school
 
 Nenuco Happy School is a toy sold by Famosa at least in the Spanish market ( http://www.nenucofamosa.es/juguetes/nenuco-happy-school ).
 
-The toy uses a ultrasound-based for the communication between the device and the corresponding iOS and Andoid app.
+The toy uses a ultrasound-based protocol for the communication between the device and the corresponding iOS and Andoid app. In effect there's no need for any other hardware than an speaker and a microphone to communicate with Nenuco.
 
-This project is an educational attempt to analyze and re-create the audio protocol in order to communicate with the Nenuco without the need of using the provided app in any computer. Once the protocol is understood and implemented the possibilities are endless for Nenuco! ;)
+This project is an educational attempt to analyze and re-create the audio protocol in order to communicate with the Nenuco without the need of using the provided app in any computer. Once the protocol is understood and implemented the possibilities are endless for Nenuco! ;):
+
+   - Nenuco raises his hand every time a new e-mail arrives
+   - Nenuco greets you when you get home with a "Hello, teacher!"
+
+
+Careful attention at making this implementation script-able has been taken,
 
 This project includes a:
 
